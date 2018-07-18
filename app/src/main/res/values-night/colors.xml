@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+
+
+    <color name="colorGray">#efeded</color>
+
+    <color name="slide_back">#666</color>
+
+
+    <color name="colorText">#d2d4d6</color>
+
+
+</resources>

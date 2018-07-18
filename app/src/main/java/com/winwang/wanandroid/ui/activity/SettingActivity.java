@@ -1,0 +1,102 @@
+package com.winwang.wanandroid.ui.activity;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.winwang.wanandroid.R;
+import com.winwang.wanandroid.base.BaseActivity;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class SettingActivity extends BaseActivity {
+
+
+    @BindView(R.id.qm_topbar)
+    QMUITopBar qmTopbar;
+    @BindView(R.id.setting_usage_tv)
+    TextView settingUsageTv;
+    @BindView(R.id.cb_setting_cache)
+    AppCompatCheckBox cbSettingCache;
+    @BindView(R.id.setting_auto_cache_group)
+    LinearLayout settingAutoCacheGroup;
+    @BindView(R.id.cb_setting_image)
+    AppCompatCheckBox cbSettingImage;
+    @BindView(R.id.cb_setting_night)
+    AppCompatCheckBox cbSettingNight;
+    @BindView(R.id.setting_usage_card)
+    CardView settingUsageCard;
+    @BindView(R.id.setting_other_tv)
+    TextView settingOtherTv;
+    @BindView(R.id.ll_setting_feedback)
+    TextView llSettingFeedback;
+    @BindView(R.id.tv_setting_clear)
+    TextView tvSettingClear;
+    @BindView(R.id.ll_setting_clear)
+    LinearLayout llSettingClear;
+    @BindView(R.id.setting_other_group)
+    CardView settingOtherGroup;
+    @BindView(R.id.tv_setting_night)
+    TextView tvSettingNight;
+    private int defaultNightMode;
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if (defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            tvSettingNight.setText("夜间模式");
+        } else {
+            tvSettingNight.setText("白天模式");
+        }
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_setting;
+    }
+
+    @Override
+    public Object newP() {
+        return null;
+    }
+
+
+    @OnClick({R.id.cb_setting_cache, R.id.cb_setting_image, R.id.cb_setting_night, R.id.ll_setting_feedback, R.id.ll_setting_clear})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.cb_setting_cache:
+                break;
+            case R.id.cb_setting_image:
+                break;
+            case R.id.cb_setting_night:
+//                SharedPref.getInstance(context).put(Constant.DAY_NIGHT_KEY, defaultNightMode == 1 ? true : false);
+                useDayNight(false);
+//                BusFactory.getBus().post(new HomeFragEvent());
+                break;
+            case R.id.ll_setting_feedback:
+                break;
+            case R.id.ll_setting_clear:
+                break;
+        }
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println(">>>OnCreate");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println(">>>OnDestroy");
+    }
+}

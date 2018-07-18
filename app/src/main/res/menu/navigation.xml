@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:enabled="true"
+        android:icon="@mipmap/btn_home_nor"
+        android:title="首页"
+        app:showAsAction="withText"/>
+    <item
+        android:id="@+id/bottom_knowledge"
+        android:enabled="true"
+        android:icon="@mipmap/btn_wp_nor"
+        android:title="知识体系"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/bottom_navigation"
+        android:enabled="true"
+        android:icon="@mipmap/home_find_nor"
+        android:title="导航"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/bottom_project"
+        android:enabled="true"
+        android:icon="@mipmap/btn_user_nor"
+        android:title="项目"
+        app:showAsAction="withText"/>
+
+
+</menu>

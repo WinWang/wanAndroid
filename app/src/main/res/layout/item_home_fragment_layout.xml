@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.CardView
+        app:cardBackgroundColor="@color/slide_back"
+        android:layout_width="match_parent"
+        android:layout_height="400pt"
+        android:layout_marginBottom="15pt"
+        android:layout_marginLeft="20pt"
+        android:layout_marginRight="20pt"
+        android:layout_marginTop="25pt"
+        app:cardCornerRadius="10pt"
+        app:cardElevation="15pt">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_home_head"
+            android:layout_width="100pt"
+            android:layout_height="100pt"
+            android:layout_marginLeft="20pt"
+            android:layout_marginTop="20pt"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_home_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140pt"
+            android:layout_marginTop="45pt"
+            android:text="我是用户姓名"
+            android:textColor="@color/colorText"
+            android:textSize="35pt" />
+
+        <TextView
+            android:id="@+id/tv_home_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="40pt"
+            android:layout_marginTop="45pt"
+            android:text="我是项目类型"
+            android:textColor="@color/orangeColor"
+            android:textSize="40pt" />
+
+        <TextView
+            android:id="@+id/tv_home_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            android:layout_marginTop="150pt"
+            android:maxLines="2"
+            android:text="哈哈哈哈哈哈哈哈哈"
+            android:textColor="@color/colorText"
+            android:textSize="40pt" />
+
+
+        <ImageView
+            android:id="@+id/iv_home_favorate"
+            android:layout_width="90pt"
+            android:layout_height="90pt"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30pt"
+            android:layout_marginLeft="20pt"
+            android:padding="10pt"
+            android:src="@mipmap/ic_launcher" />
+
+
+        <ImageView
+            android:padding="10pt"
+            android:src="@drawable/ic_timer_black_24dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30pt"
+            android:layout_marginLeft="120pt"
+            android:layout_width="90pt"
+            android:layout_height="90pt"
+            />
+
+        <TextView
+            android:id="@+id/tv_home_date"
+            android:layout_marginLeft="220pt"
+            android:textSize="40pt"
+            android:text="sdfasdfasdf"
+            android:layout_marginBottom="50pt"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"/>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="810pt"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/slide_back"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="600pt"
+        android:background="@drawable/back_slide_head">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_user_head"
+            android:layout_width="150pt"
+            android:layout_height="150pt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150pt"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="120pt"
+            android:text="登录/注册"
+            android:textColor="@color/qmui_config_color_white"
+            android:textSize="60pt" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_slide_favorate"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginTop="50pt"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80pt"
+            android:layout_height="80pt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:src="@drawable/ic_favorite_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:text=" 收藏夹"
+            android:textColor="@color/colorText"
+            android:textSize="50pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_slide_setting"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginTop="50pt"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80pt"
+            android:layout_height="80pt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:src="@drawable/ic_build_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:text=" 设置"
+            android:textColor="@color/colorText"
+            android:textSize="50pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_slide_about"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginTop="50pt"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80pt"
+            android:layout_height="80pt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:src="@drawable/ic_wc_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:text=" 关于我们"
+            android:textColor="@color/colorText"
+            android:textSize="50pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_slide_logout"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginTop="50pt"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80pt"
+            android:layout_height="80pt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:src="@drawable/ic_autorenew_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50pt"
+            android:text=" 退出登录"
+            android:textColor="@color/colorText"
+            android:textSize="50pt" />
+    </LinearLayout>
+
+
+</LinearLayout>

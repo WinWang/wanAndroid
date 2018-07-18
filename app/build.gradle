@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId "com.winwang.wanandroid"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.google.android.gms:play-services-plus:15.0.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    annotationProcessor rootProject.ext.dependencies["butterknife-apt"]
+    implementation rootProject.ext.dependencies["avi-loading"]
+    implementation project(':mvp')
+    debugCompile rootProject.ext.dependencies["canary-debug"]
+    releaseCompile rootProject.ext.dependencies["canary-release"]
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.38'
+    implementation 'com.azhon:appupdate:1.5.2'
+    implementation 'com.github.githubwing:ByeBurger:1.2.3'
+    //自动更新库
+//    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+//    implementation 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12'
+
+}
