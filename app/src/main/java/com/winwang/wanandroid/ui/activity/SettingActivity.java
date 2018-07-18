@@ -12,9 +12,11 @@ import android.widget.TextView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.base.BaseActivity;
+import com.winwang.wanandroid.event.HomeFragEvent;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.droidlover.xdroidmvp.event.BusFactory;
 
 public class SettingActivity extends BaseActivity {
 
@@ -45,17 +47,10 @@ public class SettingActivity extends BaseActivity {
     CardView settingOtherGroup;
     @BindView(R.id.tv_setting_night)
     TextView tvSettingNight;
-    private int defaultNightMode;
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        defaultNightMode = AppCompatDelegate.getDefaultNightMode();
-        if (defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            tvSettingNight.setText("夜间模式");
-        } else {
-            tvSettingNight.setText("白天模式");
-        }
-
+        topBar.setTitle("设置");
     }
 
     @Override
@@ -78,8 +73,9 @@ public class SettingActivity extends BaseActivity {
                 break;
             case R.id.cb_setting_night:
 //                SharedPref.getInstance(context).put(Constant.DAY_NIGHT_KEY, defaultNightMode == 1 ? true : false);
-                useDayNight(false);
-//                BusFactory.getBus().post(new HomeFragEvent());
+                int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+                useDayNight(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES ? false : true);
+                BusFactory.getBus().post(new HomeFragEvent(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES ? false : true));
                 break;
             case R.id.ll_setting_feedback:
                 break;
@@ -88,15 +84,4 @@ public class SettingActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        System.out.println(">>>OnCreate");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.out.println(">>>OnDestroy");
-    }
 }

@@ -9,7 +9,9 @@
 
         <item name="colorButtonNormal">@color/orangeColor</item>
 
-
+        <item name="qmui_round_btn_border_color">@color/orangeColor</item>
+        <item name="qmui_config_color_gray_3">@color/colorText</item>
+        <item name="qmui_round_btn_text_color">@color/orangeColor</item>
 
 
 

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="G:\OpenProject\wanAndroid\mvp\src\main\assets"/><source path="G:\OpenProject\wanAndroid\mvp\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="G:\OpenProject\wanAndroid\mvp\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="F:\AndroidProject\PracticeProject\wanAndroid\mvp\src\main\assets"/><source path="F:\AndroidProject\PracticeProject\wanAndroid\mvp\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="F:\AndroidProject\PracticeProject\wanAndroid\mvp\src\debug\assets"/></dataSet></merger>

@@ -8,6 +8,13 @@ import cn.droidlover.xdroidmvp.event.IBus;
 
 public class HomeFragEvent implements IBus.IEvent {
 
+    public boolean isNight;
+
+    public HomeFragEvent(boolean isNight) {
+        this.isNight = isNight;
+    }
+
+
     @Override
     public int getTag() {
         return 0;

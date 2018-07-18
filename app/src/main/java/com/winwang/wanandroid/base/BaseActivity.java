@@ -48,8 +48,8 @@ public abstract class BaseActivity<P extends IPresent> extends XActivity<P> {
 
     @Override
     protected void onDestroy() {
+//        AppManager.getAppManager().finishActivity(this);
         super.onDestroy();
-        AppManager.getAppManager().finishActivity(this);
     }
 
     protected boolean isShowBack() {
@@ -57,14 +57,14 @@ public abstract class BaseActivity<P extends IPresent> extends XActivity<P> {
     }
 
     public void useDayNight(boolean isNight) {
-        if (!isNight) {
+        if (isNight) {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_NO);
         }
-//        recreate();
+        recreate();
     }
 
 

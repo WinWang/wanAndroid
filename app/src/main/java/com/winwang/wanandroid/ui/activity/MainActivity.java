@@ -36,6 +36,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.droidlover.xdroidmvp.router.Router;
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.yokeyword.fragmentation.ISupportFragment;
 
 public class MainActivity extends BaseActivity<MainPresent> {
 
@@ -70,6 +71,7 @@ public class MainActivity extends BaseActivity<MainPresent> {
     }
 
     private void initView() {
+        fragmentList.clear();
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationBar);
         homeFragment = new HomeFragment();
         knowledgeFragment = new KnowledgeFragment();
@@ -79,6 +81,7 @@ public class MainActivity extends BaseActivity<MainPresent> {
         fragmentList.add(knowledgeFragment);
         fragmentList.add(navigationFragment);
         fragmentList.add(projectFragment);
+
         loadMultipleRootFragment(R.id.fragment_group, 0,
                 homeFragment,
                 knowledgeFragment,
@@ -213,7 +216,7 @@ public class MainActivity extends BaseActivity<MainPresent> {
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     public void changeDayNight(HomeFragEvent event) {
-        useDayNight(false);
+        useDayNight(event.isNight);
     }
 
 }
