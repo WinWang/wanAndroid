@@ -22,12 +22,15 @@ public class KnowledgePresent extends BasePresent<KnowledgeFragment> {
                 .subscribe(new ApiSubscriber<BaseModel<List<KnowledgeHierarchyData>>>() {
                     @Override
                     protected void onFail(NetError error) {
-
+                        getV().setRetryView(error);
                     }
 
                     @Override
                     protected void onSuccess(BaseModel<List<KnowledgeHierarchyData>> listBaseModel) {
-
+                        System.out.println("我在执行请求");
+                        getV().hideLoading();
+                        List<KnowledgeHierarchyData> data = listBaseModel.getData();
+                        getV().setRvData(data);
                     }
                 });
     }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
  * Created by wanglei on 2017/1/28.
  */
 
-public class LazyFragment extends RxFragment {
+public class LazyFragment extends SupportFragment {
     protected LayoutInflater layoutInflater;
     protected Activity context;
 
