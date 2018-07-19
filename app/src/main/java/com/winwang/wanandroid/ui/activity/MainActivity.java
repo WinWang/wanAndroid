@@ -18,6 +18,7 @@ import com.azhon.appupdate.config.UpdateConfiguration;
 import com.azhon.appupdate.manager.DownloadManager;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.base.BaseActivity;
+import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
 import com.winwang.wanandroid.event.HomeFragEvent;
 import com.winwang.wanandroid.model.UpdateBean;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity<MainPresent> {
     private int lastIndex = 0;
     //退出时的时间
     private long mExitTime;
-    private BaseLazyFragment[] mFragments = new BaseLazyFragment[4];
+    private BaseFragment[] mFragments = new BaseFragment[4];
     public static final int FIRST = 0;
     public static final int SECOND = 1;
     public static final int THIRD = 2;

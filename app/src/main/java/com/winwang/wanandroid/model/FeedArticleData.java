@@ -1,5 +1,7 @@
 package com.winwang.wanandroid.model;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +9,7 @@ import java.io.Serializable;
  * @date 2018/2/12
  */
 
-public class FeedArticleData implements Serializable {
+public class FeedArticleData implements Serializable, MultiItemEntity {
 
     private String apkLink;
     private String author;
@@ -179,5 +181,10 @@ public class FeedArticleData implements Serializable {
 
     public void setZan(int zan) {
         this.zan = zan;
+    }
+
+    @Override
+    public int getItemType() {
+        return 1;
     }
 }

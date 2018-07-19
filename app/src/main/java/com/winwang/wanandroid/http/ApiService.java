@@ -5,6 +5,7 @@ import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.BaseModel;
 import com.winwang.wanandroid.model.FeedArticleListData;
 import com.winwang.wanandroid.model.KnowledgeHierarchyData;
+import com.winwang.wanandroid.model.NavigationListData;
 import com.winwang.wanandroid.model.TokenBean;
 import com.winwang.wanandroid.model.UpdateBean;
 
@@ -83,6 +84,16 @@ public interface ApiService {
      */
     @GET("tree/json")
     Flowable<BaseModel<List<KnowledgeHierarchyData>>> getKnowledge();
+
+
+    /**
+     * 导航
+     * http://www.wanandroid.com/navi/json
+     *
+     * @return 导航数据
+     */
+    @GET("navi/json")
+    Flowable<BaseModel<List<NavigationListData>>> getNavigationListData();
 
 
 }
