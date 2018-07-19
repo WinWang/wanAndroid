@@ -68,6 +68,7 @@ public class HomeFragment extends BaseLazyFragment<HomeFragPresent> {
                 return new BannerViewHolder();
             }
         });
+        banner.start();
     }
 
     @Override

@@ -1,7 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.FavorateActivity">
+
+    <include layout="@layout/layout_head_top_bar" />
 
     <include layout="@layout/empty_loading_layout" />
 
@@ -9,12 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_frag_knowledge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
-</FrameLayout>
+</LinearLayout>

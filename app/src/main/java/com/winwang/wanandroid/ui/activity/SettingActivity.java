@@ -51,6 +51,12 @@ public class SettingActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         topBar.setTitle("设置");
+        boolean isNight = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES ? true : false;
+        if (isNight) {
+            cbSettingNight.setChecked(true);
+        } else {
+            cbSettingNight.setChecked(false);
+        }
     }
 
     @Override
@@ -84,4 +90,8 @@ public class SettingActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void getNetData() {
+
+    }
 }

@@ -1,8 +1,10 @@
 package com.winwang.wanandroid.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -24,6 +26,7 @@ import com.winwang.wanandroid.ui.fragment.HomeFragment;
 import com.winwang.wanandroid.ui.fragment.KnowledgeFragment;
 import com.winwang.wanandroid.ui.fragment.NavigationFragment;
 import com.winwang.wanandroid.ui.fragment.ProjectFragment;
+import com.winwang.wanandroid.utils.AppManager;
 import com.winwang.wanandroid.utils.BottomNavigationViewHelper;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -58,12 +61,14 @@ public class MainActivity extends BaseActivity<MainPresent> {
     LinearLayout llSlideAbout;
     @BindView(R.id.ll_slide_logout)
     LinearLayout llSlideLogout;
-    private List<BaseLazyFragment> fragmentList = new ArrayList<>();
-    private BaseLazyFragment homeFragment;
-    private BaseLazyFragment knowledgeFragment;
-    private BaseLazyFragment navigationFragment;
-    private BaseLazyFragment projectFragment;
     private int lastIndex = 0;
+    //退出时的时间
+    private long mExitTime;
+    private BaseLazyFragment[] mFragments = new BaseLazyFragment[4];
+    public static final int FIRST = 0;
+    public static final int SECOND = 1;
+    public static final int THIRD = 2;
+    public static final int FOUTH = 3;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -71,22 +76,27 @@ public class MainActivity extends BaseActivity<MainPresent> {
     }
 
     private void initView() {
-        fragmentList.clear();
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationBar);
-        homeFragment = new HomeFragment();
-        knowledgeFragment = new KnowledgeFragment();
-        navigationFragment = new NavigationFragment();
-        projectFragment = new ProjectFragment();
-        fragmentList.add(homeFragment);
-        fragmentList.add(knowledgeFragment);
-        fragmentList.add(navigationFragment);
-        fragmentList.add(projectFragment);
+        HomeFragment fragment = findFragment(HomeFragment.class);
+        if (fragment == null) {
+            mFragments[FIRST] = new HomeFragment();
+            mFragments[SECOND] = new KnowledgeFragment();
+            mFragments[THIRD] = new NavigationFragment();
+            mFragments[FOUTH] = new ProjectFragment();
 
-        loadMultipleRootFragment(R.id.fragment_group, 0,
-                homeFragment,
-                knowledgeFragment,
-                navigationFragment,
-                projectFragment);
+            loadMultipleRootFragment(R.id.fragment_group, FIRST,
+                    mFragments[FIRST],
+                    mFragments[SECOND],
+                    mFragments[THIRD],
+                    mFragments[FOUTH]);
+        } else {
+            mFragments[FIRST] = fragment;
+            mFragments[SECOND] = findFragment(KnowledgeFragment.class);
+            mFragments[THIRD] = findFragment(NavigationFragment.class);
+            mFragments[FOUTH] = findFragment(ProjectFragment.class);
+            showHideFragment(mFragments[FIRST]);
+            bottomNavigationBar.setSelectedItemId(R.id.bottom_home);
+        }
         topBar.setTitle("首页");
         View button = View.inflate(context, R.layout.home_left_button, null);
         topBar.addLeftView(button, R.id.topbar_left_icon);
@@ -103,22 +113,22 @@ public class MainActivity extends BaseActivity<MainPresent> {
 
                 switch (item.getItemId()) {
                     case R.id.bottom_home:
-                        showHideFragment(fragmentList.get(0), fragmentList.get(lastIndex));
+                        showHideFragment(mFragments[FIRST], mFragments[lastIndex]);
                         lastIndex = 0;
                         topBar.setTitle("首页");
                         break;
                     case R.id.bottom_knowledge:
-                        showHideFragment(fragmentList.get(1), fragmentList.get(lastIndex));
+                        showHideFragment(mFragments[SECOND], mFragments[lastIndex]);
                         lastIndex = 1;
                         topBar.setTitle("知识体系");
                         break;
                     case R.id.bottom_navigation:
-                        showHideFragment(fragmentList.get(2), fragmentList.get(lastIndex));
+                        showHideFragment(mFragments[THIRD], mFragments[lastIndex]);
                         lastIndex = 2;
                         topBar.setTitle("导航");
                         break;
                     case R.id.bottom_project:
-                        showHideFragment(fragmentList.get(3), fragmentList.get(lastIndex));
+                        showHideFragment(mFragments[FOUTH], mFragments[lastIndex]);
                         lastIndex = 3;
                         topBar.setTitle("项目");
                         break;
@@ -128,6 +138,7 @@ public class MainActivity extends BaseActivity<MainPresent> {
                 return true;
             }
         });
+
     }
 
     @Override
@@ -138,6 +149,11 @@ public class MainActivity extends BaseActivity<MainPresent> {
     @Override
     protected boolean isShowBack() {
         return false;
+    }
+
+    @Override
+    public void getNetData() {
+
     }
 
     @Override
@@ -192,10 +208,13 @@ public class MainActivity extends BaseActivity<MainPresent> {
 
                 break;
             case R.id.ll_slide_favorate:
-
+                jumpMethod(FavorateActivity.class);
                 break;
             case R.id.ll_slide_setting:
-                jumpMethod(SettingActivity.class);
+                Router.newIntent(context)
+                        .to(SettingActivity.class)
+                        .requestCode(100)
+                        .launch();
                 break;
             case R.id.ll_slide_about:
 
@@ -213,10 +232,36 @@ public class MainActivity extends BaseActivity<MainPresent> {
                 .launch();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            bottomNavigationBar.setSelectedItemId(R.id.bottom_home);
+        }
+    }
 
     @Subscribe(threadMode = ThreadMode.POSTING)
     public void changeDayNight(HomeFragEvent event) {
         useDayNight(event.isNight);
     }
 
+    @Override
+    public void onBackPressedSupport() {
+        if (drawerLayout.isDrawerOpen(Gravity.START)) {
+            drawerLayout.closeDrawers();
+            return;
+        } else {
+            exit();
+        }
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            getvDelegate().toastShort("再按一次退出玩Android");
+            mExitTime = System.currentTimeMillis();
+            return;
+        } else {
+            AppManager.getAppManager().AppExit(context);
+        }
+    }
 }

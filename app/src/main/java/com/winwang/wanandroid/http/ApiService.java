@@ -4,12 +4,14 @@ import com.winwang.wanandroid.model.BannerBean;
 import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.BaseModel;
 import com.winwang.wanandroid.model.FeedArticleListData;
+import com.winwang.wanandroid.model.KnowledgeHierarchyData;
 import com.winwang.wanandroid.model.TokenBean;
 import com.winwang.wanandroid.model.UpdateBean;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -71,6 +73,16 @@ public interface ApiService {
      */
     @GET("article/list/{num}/json")
     Flowable<BaseModel<FeedArticleListData>> getFeedArticleList(@Path("num") int num);
+
+
+    /**
+     * 知识体系
+     * http://www.wanandroid.com/tree/json
+     *
+     * @return 知识体系数据
+     */
+    @GET("tree/json")
+    Flowable<BaseModel<List<KnowledgeHierarchyData>>> getKnowledge();
 
 
 }

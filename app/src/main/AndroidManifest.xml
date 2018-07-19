@@ -51,7 +51,9 @@
             android:name="android.max_aspect"
             android:value="2.2" />
 
-        <activity android:name=".ui.activity.MainActivity">
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,7 +71,8 @@
                 android:resource="@xml/file_paths_public" />
         </provider>
 
-        <activity android:name=".ui.activity.SettingActivity"></activity>
+        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.FavorateActivity"></activity>
     </application>
 
 </manifest>
