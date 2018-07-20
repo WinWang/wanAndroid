@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:descendantFocusability="blocksDescendants">
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:clickable="false"
+        android:focusable="false"
+        android:id="@+id/qmrd_child"
+        android:layout_margin="15pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10pt"
+        android:paddingLeft="40pt"
+        android:paddingRight="40pt"
+        android:paddingTop="10pt"
+        android:text="哈哈"
+        android:textColor="@color/colorText"
+        android:textSize="38pt"
+        app:qmui_borderColor="@color/colorText"/>
+
+
+</LinearLayout>

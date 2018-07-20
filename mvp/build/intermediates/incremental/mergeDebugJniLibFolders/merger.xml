@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\AndroidProject\PracticeProject\wanAndroid\mvp\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="F:\AndroidProject\PracticeProject\wanAndroid\mvp\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="G:\OpenProject\wanAndroid_git\mvp\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="G:\OpenProject\wanAndroid_git\mvp\src\debug\jniLibs"/></dataSet></merger>

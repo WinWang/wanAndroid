@@ -7,9 +7,11 @@
 
     <color name="colorGray">#c7c7c7</color>
     <color name="orangeColor">#e84420</color>
+    <color name="navi_head">#db6a52</color>
 
 
     <color name="slide_back">#fff</color>
+    <color name="white">#ffffff</color>
 
     <color name="colorText">#2C2C2C</color>
 

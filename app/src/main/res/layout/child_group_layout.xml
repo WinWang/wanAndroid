@@ -2,17 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/colorText"/>
+    android:clickable="true"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
 
     <android.support.v7.widget.RecyclerView
-        android:background="@color/orangeColor"
         android:id="@+id/rv_child_group"
         android:layout_width="match_parent"
-        android:layout_height="40dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

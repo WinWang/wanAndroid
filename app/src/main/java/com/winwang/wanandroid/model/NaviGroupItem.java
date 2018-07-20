@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 import java.util.List;
 
-public class NaviGroupItem extends AbstractExpandableItem<NavigationListData> implements MultiItemEntity {
+public class NaviGroupItem extends AbstractExpandableItem<GroupChildItem> implements MultiItemEntity {
 
     public NaviGroupItem(String name) {
         this.name = name;

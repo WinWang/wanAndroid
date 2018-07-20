@@ -48,12 +48,6 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
         getNetData();
     }
 
