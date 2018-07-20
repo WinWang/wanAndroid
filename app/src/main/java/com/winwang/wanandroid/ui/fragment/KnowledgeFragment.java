@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.adapter.KnowledgeAdapter;
+import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
 import com.winwang.wanandroid.model.KnowledgeHierarchyData;
 import com.winwang.wanandroid.present.KnowledgePresent;
@@ -24,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class KnowledgeFragment extends BaseLazyFragment<KnowledgePresent> {
+public class KnowledgeFragment extends BaseFragment<KnowledgePresent> {
     @BindView(R.id.rv_frag_knowledge)
     RecyclerView rvFragKnowledge;
     @BindView(R.id.refresh_knowledge)
@@ -39,8 +40,9 @@ public class KnowledgeFragment extends BaseLazyFragment<KnowledgePresent> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        getNetData();
+
     }
+
 
     @Override
     public void bindEvent() {
@@ -65,6 +67,7 @@ public class KnowledgeFragment extends BaseLazyFragment<KnowledgePresent> {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
+        getNetData();
     }
 
     @Override

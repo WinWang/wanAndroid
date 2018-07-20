@@ -3,6 +3,7 @@ package com.winwang.wanandroid.ui.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.adapter.HomeFragAdapter;
+import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
 import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.FeedArticleData;
@@ -33,7 +35,7 @@ import cn.droidlover.xdroidmvp.imageloader.ILFactory;
  * Created by admin on 2018/4/12.
  */
 
-public class HomeFragment extends BaseLazyFragment<HomeFragPresent> {
+public class HomeFragment extends BaseFragment<HomeFragPresent> {
     @BindView(R.id.rv_home_frag)
     RecyclerView rvHomeFrag;
     @BindView(R.id.refresh__home)
@@ -46,6 +48,12 @@ public class HomeFragment extends BaseLazyFragment<HomeFragPresent> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
         getNetData();
     }
 
@@ -132,14 +140,15 @@ public class HomeFragment extends BaseLazyFragment<HomeFragPresent> {
     }
 
     @Override
-    protected void onResumeLazy() {
-        super.onResumeLazy();
+    public void onResume() {
+        super.onResume();
         banner.start();
     }
 
     @Override
-    protected void onPauseLazy() {
-        super.onPauseLazy();
+    public void onPause() {
+        super.onPause();
         banner.pause();
     }
+
 }
