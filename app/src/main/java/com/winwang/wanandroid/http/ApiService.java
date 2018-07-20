@@ -6,6 +6,8 @@ import com.winwang.wanandroid.model.BaseModel;
 import com.winwang.wanandroid.model.FeedArticleListData;
 import com.winwang.wanandroid.model.KnowledgeHierarchyData;
 import com.winwang.wanandroid.model.NavigationListData;
+import com.winwang.wanandroid.model.ProjectClassifyData;
+import com.winwang.wanandroid.model.ProjectListData;
 import com.winwang.wanandroid.model.TokenBean;
 import com.winwang.wanandroid.model.UpdateBean;
 
@@ -94,6 +96,27 @@ public interface ApiService {
      */
     @GET("navi/json")
     Flowable<BaseModel<List<NavigationListData>>> getNavigationListData();
+
+
+    /**
+     * 项目分类
+     * http://www.wanandroid.com/project/tree/json
+     *
+     * @return 项目分类数据
+     */
+    @GET("project/tree/json")
+    Flowable<BaseModel<List<ProjectClassifyData>>> getProjectClassifyData();
+
+    /**
+     * 项目类别数据
+     * http://www.wanandroid.com/project/list/1/json?cid=294
+     *
+     * @param page page num
+     * @param cid second page id
+     * @return 项目类别数据
+     */
+    @GET("project/list/{page}/json")
+    Flowable<BaseModel<ProjectListData>> getProjectListData(@Path("page") int page, @Query("cid") int cid);
 
 
 }

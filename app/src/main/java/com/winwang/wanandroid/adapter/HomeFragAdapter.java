@@ -29,7 +29,7 @@ public class HomeFragAdapter extends BaseQuickAdapter<FeedArticleData, BaseViewH
     @Override
     protected void convert(BaseViewHolder helper, FeedArticleData item) {
         CircleImageView headView = (CircleImageView) helper.getView(R.id.civ_home_head);
-        ILoader.Options options = new ILoader.Options(R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+        ILoader.Options options = new ILoader.Options(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round);
         ILFactory.getLoader().loadNet(headView, item.getEnvelopePic(), options);
         helper.setText(R.id.tv_home_name, item.getAuthor());
         helper.setText(R.id.tv_home_item_type, item.getSuperChapterName() + "/" + item.getChapterName());

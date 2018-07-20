@@ -1,5 +1,6 @@
 package com.winwang.wanandroid.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,13 +14,17 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.winwang.wanandroid.R;
+import com.winwang.wanandroid.base.Constant;
 import com.winwang.wanandroid.model.FeedArticleData;
 import com.winwang.wanandroid.model.GroupChildItem;
 import com.winwang.wanandroid.model.NaviGroupItem;
 import com.winwang.wanandroid.model.NavigationListData;
+import com.winwang.wanandroid.ui.activity.WebDetailActivity;
 import com.winwang.wanandroid.utils.ToastUtil;
 
 import java.util.List;
+
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class NavigationAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {
     /**
@@ -29,9 +34,9 @@ public class NavigationAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity
      * @param data A new list is created out of this one to avoid mutable list
      */
 
-    private Context context;
+    private Activity context;
 
-    public NavigationAdapter(List<MultiItemEntity> data, Context context) {
+    public NavigationAdapter(List<MultiItemEntity> data, Activity context) {
         super(data);
         addItemType(0, R.layout.header_group_navi);//头布局
         addItemType(1, R.layout.child_group_layout);
@@ -44,6 +49,7 @@ public class NavigationAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity
             case 0:
                 final NaviGroupItem item1 = (NaviGroupItem) item;
                 helper.setText(R.id.tv_group_header, item1.getName());
+                helper.setImageResource(R.id.iv_navi_head_expand, item1.isExpanded() ? R.drawable.ic_expand_more_white : R.drawable.ic_right_arrow_white);
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -70,7 +76,11 @@ public class NavigationAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity
                 naviChildAdapter.setOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ToastUtil.showToast(articles.get(position).getTitle());
+                        Router.newIntent(context)
+                                .to(WebDetailActivity.class)
+                                .putString(Constant.ARTICAL_URL, articles.get(position).getLink())
+                                .putString(Constant.ARTICAL_Title, articles.get(position).getTitle())
+                                .launch();
                     }
                 });
                 break;

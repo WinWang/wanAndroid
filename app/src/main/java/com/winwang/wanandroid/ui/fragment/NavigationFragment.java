@@ -74,8 +74,8 @@ public class NavigationFragment extends BaseFragment<NavigationPresent> {
             NaviGroupItem naviGroupItem = new NaviGroupItem(datum.getName());
             GroupChildItem groupChildItem = new GroupChildItem();
             groupChildItem.setArticles(datum.getArticles());
+            naviGroupItem.addSubItem(groupChildItem);
             res.add(naviGroupItem);
-            res.add(groupChildItem);
         }
         refreshNavi.finishRefresh(1000);
         NavigationAdapter navigationAdapter = new NavigationAdapter(res, context);

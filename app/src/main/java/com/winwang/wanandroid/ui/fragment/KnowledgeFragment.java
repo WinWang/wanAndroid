@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -16,14 +17,17 @@ import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.adapter.KnowledgeAdapter;
 import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
+import com.winwang.wanandroid.base.Constant;
 import com.winwang.wanandroid.model.KnowledgeHierarchyData;
 import com.winwang.wanandroid.present.KnowledgePresent;
+import com.winwang.wanandroid.ui.activity.WebDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class KnowledgeFragment extends BaseFragment<KnowledgePresent> {
     @BindView(R.id.rv_frag_knowledge)
@@ -61,6 +65,17 @@ public class KnowledgeFragment extends BaseFragment<KnowledgePresent> {
                 getP().getListData();
             }
         });
+
+        knowledgeAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                Router.newIntent(context)
+//                        .to(WebDetailActivity.class)
+//                        .putString(Constant.ARTICAL_URL, dataList.get(position).get)
+//                        .launch();
+            }
+        });
+
     }
 
 

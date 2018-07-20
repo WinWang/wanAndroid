@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="140pt"
-    android:background="@color/navi_head">
+    android:background="@color/navi_head"
+    android:orientation="vertical">
 
     <TextView
-        android:textStyle="bold|italic"
         android:id="@+id/tv_group_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="138pt"
         android:layout_marginLeft="15dp"
         android:gravity="center_vertical"
         android:text="我是头布局"
         android:textColor="@color/white"
-        android:textSize="45pt" />
+        android:textSize="45pt"
+        android:textStyle="bold|italic" />
 
-</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:layout_alignParentBottom="true"
+        android:background="#d9d9d9" />
+
+    <ImageView
+        android:id="@+id/iv_navi_head_expand"
+        android:layout_width="60pt"
+        android:layout_height="60pt"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40pt"
+        android:src="@drawable/ic_right_arrow_white" />
+
+
+</RelativeLayout>
