@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.header.PhoenixHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -18,9 +19,11 @@ import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.adapter.HomeFragAdapter;
 import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
+import com.winwang.wanandroid.base.Constant;
 import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.FeedArticleData;
 import com.winwang.wanandroid.present.HomeFragPresent;
+import com.winwang.wanandroid.ui.activity.WebDetailActivity;
 import com.winwang.wanandroid.widget.mzbanner.MZBannerView;
 import com.winwang.wanandroid.widget.mzbanner.holder.MZHolderCreator;
 import com.winwang.wanandroid.widget.mzbanner.holder.MZViewHolder;
@@ -30,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.droidlover.xdroidmvp.imageloader.ILFactory;
+import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * Created by admin on 2018/4/12.
@@ -48,12 +52,6 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
         getNetData();
     }
 
@@ -112,6 +110,17 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
         View inflate = View.inflate(context, R.layout.header_home_frag, null);
         banner = (MZBannerView) inflate.findViewById(R.id.mz_banner_home);
         homeFragAdapter.addHeaderView(inflate);
+
+        homeFragAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Router.newIntent(context)
+                        .to(WebDetailActivity.class)
+                        .putString(Constant.ARTICAL_URL, list.get(position).getLink())
+                        .putString(Constant.ARTICAL_Title, list.get(position).getTitle())
+                        .launch();
+            }
+        });
 
     }
 

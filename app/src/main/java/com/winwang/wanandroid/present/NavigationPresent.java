@@ -26,11 +26,12 @@ public class NavigationPresent extends BasePresent<NavigationFragment> {
                 .subscribe(new ApiSubscriber<BaseModel<List<NavigationListData>>>() {
                     @Override
                     protected void onFail(NetError error) {
-
+                        getV().setRetryView(error);
                     }
 
                     @Override
                     protected void onSuccess(BaseModel<List<NavigationListData>> listBaseModel) {
+                        getV().hideLoading();
                         List<NavigationListData> data = listBaseModel.getData();
                         getV().setNaviData(data);
                     }
