@@ -1,5 +1,6 @@
 package com.winwang.wanandroid.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,7 +21,10 @@ import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.base.BaseActivity;
 import com.winwang.wanandroid.base.BaseFragment;
 import com.winwang.wanandroid.base.BaseLazyFragment;
+import com.winwang.wanandroid.base.Constant;
 import com.winwang.wanandroid.event.HomeFragEvent;
+import com.winwang.wanandroid.event.LoginEvent;
+import com.winwang.wanandroid.model.LoginData;
 import com.winwang.wanandroid.model.UpdateBean;
 import com.winwang.wanandroid.present.MainPresent;
 import com.winwang.wanandroid.ui.fragment.HomeFragment;
@@ -29,6 +33,7 @@ import com.winwang.wanandroid.ui.fragment.NavigationFragment;
 import com.winwang.wanandroid.ui.fragment.ProjectFragment;
 import com.winwang.wanandroid.utils.AppManager;
 import com.winwang.wanandroid.utils.BottomNavigationViewHelper;
+import com.winwang.wanandroid.utils.ToastUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -38,8 +43,13 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.droidlover.xdroidmvp.cache.Sp;
+import cn.droidlover.xdroidmvp.event.BusFactory;
+import cn.droidlover.xdroidmvp.imageloader.ILFactory;
+import cn.droidlover.xdroidmvp.imageloader.ILoader;
 import cn.droidlover.xdroidmvp.router.Router;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.functions.Consumer;
 import me.yokeyword.fragmentation.ISupportFragment;
 
 public class MainActivity extends BaseActivity<MainPresent> {
@@ -73,7 +83,9 @@ public class MainActivity extends BaseActivity<MainPresent> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        getPerssion();
         initView();
+        getNetData();
     }
 
     private void initView() {
@@ -154,7 +166,16 @@ public class MainActivity extends BaseActivity<MainPresent> {
 
     @Override
     public void getNetData() {
+        String user = Sp.getInstance(context).getString(Constant.LOGIN_USER, "");
+        String pass = Sp.getInstance(context).getString(Constant.LOGIN_PASS, "");
+        getP().autoLogin(user, pass);
+    }
 
+    public void doLoginSuccess(LoginData data) {
+        Sp.getInstance(context).putBoolean(Constant.LOGIN_STATUS,true);
+        tvUserName.setText(data.getUsername());
+        ILoader.Options options = new ILoader.Options(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round);
+        ILFactory.getLoader().loadNet(civUserHead, data.getIcon(), options);
     }
 
     @Override
@@ -166,6 +187,24 @@ public class MainActivity extends BaseActivity<MainPresent> {
     @Override
     public MainPresent newP() {
         return new MainPresent();
+    }
+
+
+    private void getPerssion() {
+        getRxPermissions()
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if (aBoolean) {
+                            ToastUtil.showToast("权限成功");
+                        } else {
+                            ToastUtil.showToast("权限失败");
+                        }
+                    }
+                });
     }
 
 
@@ -203,10 +242,14 @@ public class MainActivity extends BaseActivity<MainPresent> {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.civ_user_head:
-
+                if (!getLoginStatus()) {
+                    jumpMethod(LoginActivity.class);
+                }
                 break;
             case R.id.tv_user_name:
-
+                if (!getLoginStatus()) {
+                    jumpMethod(LoginActivity.class);
+                }
                 break;
             case R.id.ll_slide_favorate:
                 jumpMethod(FavorateActivity.class);
@@ -245,6 +288,15 @@ public class MainActivity extends BaseActivity<MainPresent> {
     public void changeDayNight(HomeFragEvent event) {
         useDayNight(event.isNight);
     }
+
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void changeLogin(LoginEvent e) {
+        tvUserName.setText(e.data.getUsername());
+        ILoader.Options options = new ILoader.Options(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round);
+        ILFactory.getLoader().loadNet(civUserHead, e.data.getIcon(), options);
+    }
+
 
     @Override
     public void onBackPressedSupport() {

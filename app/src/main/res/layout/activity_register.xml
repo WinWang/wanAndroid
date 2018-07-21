@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_back"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/iv_register_back"
+        android:layout_width="130pt"
+        android:layout_height="130pt"
+        android:layout_marginLeft="30pt"
+        android:layout_marginTop="30pt"
+        android:padding="25pt"
+        android:src="@drawable/ic_arrow_back_black_24dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginLeft="80pt"
+        android:layout_marginRight="80pt"
+        android:layout_marginTop="500pt">
+
+        <ImageView
+            android:layout_width="60pt"
+            android:layout_height="60pt"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_user" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="90pt"
+            android:layout_marginRight="70px"
+            android:background="#fff" />
+
+        <EditText
+            android:textColor="@color/white"
+            android:hint="请输入手机号/邮箱"
+            android:id="@+id/et_register_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100pt"
+            android:background="@null" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginLeft="80pt"
+        android:layout_marginRight="80pt"
+        android:layout_marginTop="670pt">
+
+        <ImageView
+
+            android:layout_width="60pt"
+            android:layout_height="60pt"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_password" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="90pt"
+            android:layout_marginRight="70px"
+            android:background="#fff" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:hint="请输入密码"
+            android:id="@+id/et_register_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100pt"
+            android:background="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_register_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="120pt"
+        android:layout_marginLeft="80pt"
+        android:layout_marginRight="80pt"
+        android:layout_marginTop="840pt">
+
+        <ImageView
+
+            android:layout_width="60pt"
+            android:layout_height="60pt"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_password" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="90pt"
+            android:layout_marginRight="70px"
+            android:background="#fff" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:hint="请再次输入密码"
+            android:id="@+id/et_register_password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100pt"
+            android:background="@null" />
+
+    </RelativeLayout>
+
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/qmrb_register_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="130pt"
+        android:layout_below="@+id/rl_register_password_confirm"
+        android:layout_marginLeft="150pt"
+        android:layout_marginRight="150pt"
+        android:layout_marginTop="160pt"
+        android:text="注册"
+        android:textColor="@color/login_back"
+        android:textSize="60pt"
+        app:qmui_backgroundColor="@color/white"
+        app:qmui_borderWidth="0pt" />
+
+
+</RelativeLayout>

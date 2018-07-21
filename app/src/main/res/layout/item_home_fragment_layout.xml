@@ -60,12 +60,13 @@
 
 
         <ImageView
+
             android:id="@+id/iv_home_favorate"
             android:layout_width="90pt"
             android:layout_height="90pt"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|right"
             android:layout_marginBottom="30pt"
-            android:layout_marginLeft="20pt"
+            android:layout_marginRight="50pt"
             android:padding="10pt"
             android:src="@mipmap/ic_launcher" />
 
@@ -75,14 +76,14 @@
             android:src="@drawable/ic_timer_black_24dp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="30pt"
-            android:layout_marginLeft="120pt"
+            android:layout_marginLeft="20pt"
             android:layout_width="90pt"
             android:layout_height="90pt"
             />
 
         <TextView
             android:id="@+id/tv_home_date"
-            android:layout_marginLeft="220pt"
+            android:layout_marginLeft="120pt"
             android:textSize="40pt"
             android:text="sdfasdfasdf"
             android:layout_marginBottom="50pt"

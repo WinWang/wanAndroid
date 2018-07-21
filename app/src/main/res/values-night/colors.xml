@@ -13,5 +13,7 @@
 
     <color name="colorText">#d2d4d6</color>
 
+    <color name="login_back">#666</color>
+
 
 </resources>

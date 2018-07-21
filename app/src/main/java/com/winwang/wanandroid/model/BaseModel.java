@@ -29,7 +29,7 @@ public class BaseModel<T> implements IModel {
 
     @Override
     public boolean isAuthError() {
-        return errorCode == -1;
+        return errorCode < 0;
     }
 
     @Override

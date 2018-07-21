@@ -78,7 +78,7 @@ public class SettingActivity extends BaseActivity {
             case R.id.cb_setting_image:
                 break;
             case R.id.cb_setting_night:
-//                SharedPref.getInstance(context).put(Constant.DAY_NIGHT_KEY, defaultNightMode == 1 ? true : false);
+//                Sp.getInstance(context).put(Constant.DAY_NIGHT_KEY, defaultNightMode == 1 ? true : false);
                 int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
                 useDayNight(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES ? false : true);
                 BusFactory.getBus().post(new HomeFragEvent(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES ? false : true));

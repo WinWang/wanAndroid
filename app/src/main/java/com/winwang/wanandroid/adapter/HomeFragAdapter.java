@@ -13,6 +13,7 @@ import java.util.List;
 
 import cn.droidlover.xdroidmvp.imageloader.ILFactory;
 import cn.droidlover.xdroidmvp.imageloader.ILoader;
+import cn.droidlover.xdroidmvp.kit.Kits;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -46,5 +47,9 @@ public class HomeFragAdapter extends BaseQuickAdapter<FeedArticleData, BaseViewH
         } else {
             likeIcon.setImageResource(R.drawable.ic_favorite_black_24dp);
         }
+
+        helper.addOnClickListener(R.id.iv_home_favorate);
+        helper.setText(R.id.tv_home_date, Kits.Date.getMdhm(item.getPublishTime()));
+
     }
 }

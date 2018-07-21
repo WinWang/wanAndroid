@@ -5,4 +5,6 @@ public class Constant {
     public static final String LOGIN_STATUS = "login_status";//登录状态
     public static final String ARTICAL_URL = "artical_url";
     public static final String ARTICAL_Title = "artical_title";
+    public static final String LOGIN_USER = "login_user";
+    public static final String LOGIN_PASS = "login_pass";
 }

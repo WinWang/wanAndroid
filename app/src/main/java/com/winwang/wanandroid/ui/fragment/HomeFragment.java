@@ -24,6 +24,7 @@ import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.FeedArticleData;
 import com.winwang.wanandroid.present.HomeFragPresent;
 import com.winwang.wanandroid.ui.activity.WebDetailActivity;
+import com.winwang.wanandroid.utils.ToastUtil;
 import com.winwang.wanandroid.widget.mzbanner.MZBannerView;
 import com.winwang.wanandroid.widget.mzbanner.holder.MZHolderCreator;
 import com.winwang.wanandroid.widget.mzbanner.holder.MZViewHolder;
@@ -119,6 +120,12 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
                         .putString(Constant.ARTICAL_URL, list.get(position).getLink())
                         .putString(Constant.ARTICAL_Title, list.get(position).getTitle())
                         .launch();
+            }
+        });
+        homeFragAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                ToastUtil.showToast("ddddd");
             }
         });
 

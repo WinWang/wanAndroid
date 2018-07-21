@@ -9,25 +9,25 @@ import cn.droidlover.xdroidmvp.XDroidConf;
  * Created by wanglei on 2016/11/27.
  */
 
-public class SharedPref implements ICache {
+public class Sp implements ICache {
 
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
 
     static final String SP_NAME = XDroidConf.CACHE_SP_NAME;
 
-    private static SharedPref instance;
+    private static Sp instance;
 
-    private SharedPref(Context context) {
+    private Sp(Context context) {
         sharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
 
-    public static SharedPref getInstance(Context context) {
+    public static Sp getInstance(Context context) {
         if (instance == null) {
-            synchronized (SharedPref.class) {
+            synchronized (Sp.class) {
                 if (instance == null) {
-                    instance = new SharedPref(context.getApplicationContext());
+                    instance = new Sp(context.getApplicationContext());
                 }
             }
         }

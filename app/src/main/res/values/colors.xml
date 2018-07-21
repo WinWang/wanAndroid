@@ -16,7 +16,7 @@
     <color name="colorText">#2C2C2C</color>
     <color name="tabColorUnselect">#2C2C2C</color>
 
-
+    <color name="login_back">#db6a52</color>
 
 
 </resources>

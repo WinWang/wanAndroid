@@ -73,7 +73,9 @@
 
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".ui.activity.FavorateActivity" />
-        <activity android:name=".ui.activity.WebDetailActivity"></activity>
+        <activity android:name=".ui.activity.WebDetailActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.RegisterActivity"></activity>
     </application>
 
 </manifest>

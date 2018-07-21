@@ -10,7 +10,9 @@ import com.qmuiteam.qmui.widget.QMUIEmptyView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.utils.AppManager;
+import com.winwang.wanandroid.utils.SpUtils;
 
+import cn.droidlover.xdroidmvp.cache.Sp;
 import cn.droidlover.xdroidmvp.mvp.IPresent;
 import cn.droidlover.xdroidmvp.mvp.XActivity;
 import cn.droidlover.xdroidmvp.net.NetError;
@@ -52,6 +54,7 @@ public abstract class BaseActivity<P extends IPresent> extends XActivity<P> {
 
 
     public void setRetryView(NetError error) {
+        getvDelegate().toastLong(error.getMessage());
         if (emptyView != null) {
             emptyView.show(false, error.getMessage(), null, "点击重试", new View.OnClickListener() {
                 @Override
@@ -93,5 +96,16 @@ public abstract class BaseActivity<P extends IPresent> extends XActivity<P> {
     }
 
     public abstract void getNetData();
+
+
+    /**
+     * 获取登录状态
+     *
+     * @return
+     */
+    protected boolean getLoginStatus() {
+        return Sp.getInstance(context).getBoolean(Constant.LOGIN_STATUS, false);
+    }
+
 
 }

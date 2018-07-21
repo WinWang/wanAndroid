@@ -15,13 +15,17 @@ import com.squareup.leakcanary.LeakCanary;
 import com.winwang.wanandroid.R;
 import com.winwang.wanandroid.utils.ScreenFitHelper;
 
+import java.util.List;
+
 import cn.droidlover.xdroidmvp.XDroidConf;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.NetProvider;
 import cn.droidlover.xdroidmvp.net.RequestHandler;
 import cn.droidlover.xdroidmvp.net.XApi;
 import cn.droidlover.xdroidmvp.net.cookie.MemoryCookieStore;
+import okhttp3.Cookie;
 import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 
@@ -97,23 +101,22 @@ public class MyApp extends Application {
 
             @Override
             public CookieJar configCookie() {
-                return null;
-//                return new CookieJar() {
-//                    @Override
-//                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-//                        try {
-//                            persistentCookieStore.add(url, cookies);
-//                        } catch (Exception e) {
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public List<Cookie> loadForRequest(HttpUrl url) {
-//                        List<Cookie> cookies = persistentCookieStore.get(url);
-//                        return cookies;
-//                    }
-//                };
+                return new CookieJar() {
+                    @Override
+                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+                        try {
+                            persistentCookieStore.add(url, cookies);
+                        } catch (Exception e) {
+
+                        }
+                    }
+
+                    @Override
+                    public List<Cookie> loadForRequest(HttpUrl url) {
+                        List<Cookie> cookies = persistentCookieStore.get(url);
+                        return cookies;
+                    }
+                };
             }
 
             @Override

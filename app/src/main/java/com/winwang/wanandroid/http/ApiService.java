@@ -5,6 +5,7 @@ import com.winwang.wanandroid.model.BannerData;
 import com.winwang.wanandroid.model.BaseModel;
 import com.winwang.wanandroid.model.FeedArticleListData;
 import com.winwang.wanandroid.model.KnowledgeHierarchyData;
+import com.winwang.wanandroid.model.LoginData;
 import com.winwang.wanandroid.model.NavigationListData;
 import com.winwang.wanandroid.model.ProjectClassifyData;
 import com.winwang.wanandroid.model.ProjectListData;
@@ -112,11 +113,37 @@ public interface ApiService {
      * http://www.wanandroid.com/project/list/1/json?cid=294
      *
      * @param page page num
-     * @param cid second page id
+     * @param cid  second page id
      * @return 项目类别数据
      */
     @GET("project/list/{page}/json")
     Flowable<BaseModel<ProjectListData>> getProjectListData(@Path("page") int page, @Query("cid") int cid);
+
+
+    /**
+     * 登陆
+     * http://www.wanandroid.com/user/login
+     *
+     * @param username user name
+     * @param password password
+     * @return 登陆数据
+     */
+    @POST("user/login")
+    @FormUrlEncoded
+    Flowable<BaseModel<LoginData>> getLoginData(@Field("username") String username, @Field("password") String password);
+
+    /**
+     * 注册
+     * http://www.wanandroid.com/user/register
+     *
+     * @param username   user name
+     * @param password   password
+     * @param repassword re password
+     * @return 注册数据
+     */
+    @POST("user/register")
+    @FormUrlEncoded
+    Flowable<BaseModel<LoginData>> getRegisterData(@Field("username") String username, @Field("password") String password, @Field("repassword") String repassword);
 
 
 }
