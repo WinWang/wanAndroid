@@ -21,6 +21,7 @@ public class RegisterPresent extends BasePresent<RegisterActivity> {
                     @Override
                     protected void onFail(NetError error) {
                         getV().setRetryView(error);
+                        getV().hideDialog();
                     }
 
                     @Override

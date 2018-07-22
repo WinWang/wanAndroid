@@ -22,7 +22,10 @@ import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.NetProvider;
 import cn.droidlover.xdroidmvp.net.RequestHandler;
 import cn.droidlover.xdroidmvp.net.XApi;
+import cn.droidlover.xdroidmvp.net.cookie.CookieJarImpl;
+import cn.droidlover.xdroidmvp.net.cookie.CookieStore;
 import cn.droidlover.xdroidmvp.net.cookie.MemoryCookieStore;
+import cn.droidlover.xdroidmvp.net.cookie.PersistentCookieStore;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
@@ -49,7 +52,7 @@ public class MyApp extends Application {
             @Override
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
                 //指定为经典Footer，默认是 BallPulseFooter
-                layout.setPrimaryColorsId(R.color.colorPrimary,android.R.color.white);
+                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
                 return new BallPulseFooter(context);
             }
         });
@@ -100,8 +103,9 @@ public class MyApp extends Application {
             }
 
             @Override
-            public CookieJar configCookie() {
-                return new CookieJar() {
+            public CookieJar configCookie() {//Cookie持久化操作
+                PersistentCookieStore cookieStore = new PersistentCookieStore(mContext);
+                return new CookieJarImpl(cookieStore) {
                     @Override
                     public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
                         try {

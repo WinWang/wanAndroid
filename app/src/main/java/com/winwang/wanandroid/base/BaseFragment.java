@@ -20,6 +20,7 @@ public abstract class BaseFragment<P extends IPresent> extends XFragment<P> {
 
     public void setRetryView(NetError error) {
         if (emptyView != null) {
+            getvDelegate().toastShort(error.getMessage());
             emptyView.show(false, error.getMessage(), null, "点击重试", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

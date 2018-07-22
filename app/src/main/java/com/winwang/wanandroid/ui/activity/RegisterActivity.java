@@ -66,6 +66,12 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         return new RegisterPresent();
     }
 
+    public void hideDialog() {
+        if (qmuiTipDialog != null) {
+            qmuiTipDialog.dismiss();
+        }
+    }
+
     public void registerSuc() {
         if (qmuiTipDialog != null) {
             qmuiTipDialog.dismiss();
@@ -91,7 +97,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                         qmuiTipDialog.show();
                     }
                     getP().doRegister(user, password, passwordConfirm);
-                }else {
+                } else {
                     getvDelegate().toastShort("不能为空哦！！！");
                 }
                 break;

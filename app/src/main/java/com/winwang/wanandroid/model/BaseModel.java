@@ -39,7 +39,7 @@ public class BaseModel<T> implements IModel {
 
     @Override
     public String getErrorMsg() {
-        return null;
+        return errorMsg;
     }
 
     public String getMessage() {

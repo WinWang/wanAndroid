@@ -47,7 +47,7 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
     SmartRefreshLayout refreshLayout;
     List<FeedArticleData> list = new ArrayList<>();
     private HomeFragAdapter homeFragAdapter;
-    private int index = 1;
+    private int index = 0;
     private MZBannerView banner;
     private List<BannerData> bannerList = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
     public void setHomeList(List<FeedArticleData> datas) {
         refreshLayout.finishLoadMore(500);
         refreshLayout.finishRefresh(1000);
-        if (index == 1) {
+        if (index == 0) {
             list.clear();
         }
         list.addAll(datas);
@@ -101,7 +101,7 @@ public class HomeFragment extends BaseFragment<HomeFragPresent> {
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                index = 1;
+                index = 0;
                 getP().getListData(index);
             }
         });

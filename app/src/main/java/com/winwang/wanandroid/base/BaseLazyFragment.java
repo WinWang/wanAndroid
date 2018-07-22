@@ -24,6 +24,7 @@ public abstract class BaseLazyFragment<P extends IPresent> extends XLazyFragment
 
     public void setRetryView(NetError error) {
         if (emptyView != null) {
+            getvDelegate().toastShort(error.getMessage());
             emptyView.show(false, error.getMessage(), null, "点击重试", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
